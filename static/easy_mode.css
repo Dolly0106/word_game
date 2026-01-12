@@ -40,6 +40,46 @@ body, html {
     background: rgba(255, 255, 255, 0.5);
 }
 
+/* 星星顯示區域 */
+.stars-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+    align-items: center;
+}
+
+.stars-container .star {
+    font-size: 2.5em;
+    color: #FFD700; /* 金色 */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+    opacity: 0.3;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: scale(0.8);
+}
+
+.stars-container .star.active {
+    opacity: 1;
+    transform: scale(1);
+    animation: star-pop 0.5s ease-out;
+}
+
+@keyframes star-pop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 .game-box {
     position: absolute;
     top: 50%;
@@ -617,6 +657,17 @@ a {
         right: 10px;
         padding: 5px 10px;
     }
+    
+    /* 移動設備上的星星樣式 */
+    .stars-container {
+        top: 15px;
+        right: 15px;
+        gap: 8px;
+    }
+    .stars-container .star {
+        font-size: 2em;
+    }
+    
     .modal-content {
         background-color: #fff;
         padding: 20px;
